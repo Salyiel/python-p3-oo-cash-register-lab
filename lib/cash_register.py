@@ -17,11 +17,17 @@ class CashRegister:
         if self.discount > 0:
             discount_amount = (self.discount / 100) * self.total
             self.total -= discount_amount
-            return f"After the discount, the total comes to ${self.total:.2f}."
+            if self.total.is_integer():
+                print(f"After the discount, the total comes to ${int(self.total)}.")
+            else:
+                print(f"After the discount, the total comes to ${self.total:.2f}.")
         else:
-            return "There is no discount to apply."
+            print("There is no discount to apply.")
 
     def void_last_transaction(self):
         self.total -= self.last_transaction_amount
         self.last_transaction_amount = 0
+
+
+
 pass
